@@ -2,7 +2,7 @@ require 'simple_warehouse'
 
 describe SimpleWarehouse do
   
-  it { is_expected.to respond_to(:init) }
+  it { is_expected.to respond_to(:init).with(2).argument }
 
   describe '#init' do
     it 'initialises a new warehouse' do

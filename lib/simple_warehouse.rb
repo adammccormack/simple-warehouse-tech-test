@@ -17,6 +17,15 @@ class SimpleWarehouse
     end
   end
 
+  def init(x,y)
+
+  end
+
+  def view
+    true
+  end
+  
+
   private
 
   def show_help_message
