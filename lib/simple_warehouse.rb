@@ -23,7 +23,7 @@ class SimpleWarehouse
     end
   end
 
-  def init(x = 10,y = 10)
+  def init(x = 10, y = 10)
     @row = x
     @col = y
     @size = x*y
@@ -67,6 +67,7 @@ class SimpleWarehouse
 
   def to_grid
     @grid = to_numbers_array.each_slice(col).to_a
+    @grid.transpose
   end
 
 end
