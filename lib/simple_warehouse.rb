@@ -1,10 +1,5 @@
 class SimpleWarehouse
-  def initialize(x: 0, y: 0, size: 0, grid: [])
-    @row = row
-    @col = col
-    @size = size
-    @grid = grid
-  end
+  attr_accessor :x, :y
 
   def run
     @live = true
@@ -23,23 +18,16 @@ class SimpleWarehouse
     end
   end
 
-  def init(x = 10, y = 10)
-    @row = x
-    @col = y
-    @size = x*y
-    to_numbers_array
-    to_empty_array
-    to_grid
+  def init
+    x = get_x
+    y = get_y
   end
 
   def view
     true
   end
-  
 
   private
-
-  attr_reader :row, :col, :grid
 
   def show_help_message
     puts <<~HELP
@@ -60,19 +48,6 @@ class SimpleWarehouse
   def exit
     puts 'Thank you for using simple_warehouse!'
     @live = false
-  end
-
-  def to_numbers_array
-    @to_numbers_array = (1..@size).map {|i| i}
-  end
-
-  def to_empty_array
-    @to_empty_array = @to_numbers_array.map {|i| i = ' '}
-  end
-
-  def to_grid
-    @grid = @to_empty_array.each_slice(col).to_a
-    @grid.transpose
   end
 
 end

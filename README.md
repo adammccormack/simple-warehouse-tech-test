@@ -21,9 +21,12 @@ So that I can read the instructions,
 I would like to be able to enter a relevant command in the terminal
 
 As a User,
-So that I can store products
+So that I can store products,
 I want to be able to create a empty warehouse with a given length and height integer
 
+As a User,
+So that I can store product
+I would like to be able to store a crate of a given size in the warehouse
 
 
 
