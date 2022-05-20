@@ -28,6 +28,7 @@ class SimpleWarehouse
     @col = y
     @size = x*y
     to_numbers_array
+    to_empty_array
     to_grid
   end
 
@@ -65,8 +66,12 @@ class SimpleWarehouse
     @to_numbers_array = (1..@size).map {|i| i}
   end
 
+  def to_empty_array
+    @to_empty_array = @to_numbers_array.map {|i| i = ' '}
+  end
+
   def to_grid
-    @grid = to_numbers_array.each_slice(col).to_a
+    @grid = @to_empty_array.each_slice(col).to_a
     @grid.transpose
   end
 

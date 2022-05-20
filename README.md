@@ -22,7 +22,7 @@ I would like to be able to enter a relevant command in the terminal
 
 As a User,
 So that I can store products
-I want to be able to create a warehouse with a given length and height integer
+I want to be able to create a empty warehouse with a given length and height integer
 
 
 
