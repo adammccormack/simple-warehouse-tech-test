@@ -23,22 +23,19 @@ class SimpleWarehouse
     end
   end
 
-  def init
-      
-  end
-
-  def set_x=(x)
+  def init(x, y)
     @current_x = x
+    @current_y = y
   end
 
-  def set_y=(y)
+  def set_xy(x, y)
+    @current_x = x
     @current_y = y
   end
 
   def view
     true
   end
-
 
   private
 
