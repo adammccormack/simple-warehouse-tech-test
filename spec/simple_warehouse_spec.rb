@@ -2,16 +2,16 @@ require 'simple_warehouse'
 
 describe SimpleWarehouse do
   
-  it { is_expected.to respond_to(:init).with(2).argument }
+  it { is_expected.to respond_to(:init) }
 
   describe '#init' do
-    let (:output) { [[1, 2],
-                     [3, 4]]
+    let (:output) { [[' ', ' '],
+                     [' ', ' ']]
    }
     it 'initialises a new warehouse' do
       warehouse = SimpleWarehouse.new
       
-      result = warehouse.init(2,2)
+      result = warehouse.init
 
       expect(result).to match_array(output)
     end

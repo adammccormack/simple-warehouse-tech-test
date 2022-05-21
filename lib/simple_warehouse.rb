@@ -1,9 +1,9 @@
 class SimpleWarehouse
-  def initialize(x: 0, y: 0, size: 0, grid: [])
-    @row = row
-    @col = col
-    @size = size
-    @grid = grid
+  attr_reader :current_x, :current_y
+
+  def initialize
+    @current_x = 0
+    @current_y = 0
   end
 
   def run
@@ -23,23 +23,44 @@ class SimpleWarehouse
     end
   end
 
-  def init(x = 10, y = 10)
-    @row = x
-    @col = y
-    @size = x*y
+  def init(x, y)
+    @current_x = x
+    @current_y = y
+    set_warehouse_size
     to_numbers_array
-    to_empty_array
+    to_empty_shelve_array
     to_grid
   end
+
+  def store(x, y, w, h, p)
+    position_x = x
+    position_y = y
+    crate_size = w*h
+    product_type = p
+  end
+
 
   def view
     true
   end
-  
 
   private
 
-  attr_reader :row, :col, :grid
+  def to_empty_shelve_array
+    to_empty_shelve_array = to_numbers_array.map {|i| i = '  '}
+  end
+
+  def set_warehouse_size
+    @warehouse_size = @current_x*@current_y
+  end
+
+  def to_numbers_array
+    to_numbers_array = (1..@warehouse_size).map {|i| i}
+  end
+
+  def to_grid
+    to_grid = to_empty_shelve_array.each_slice(@current_x).to_a
+  end
 
   def show_help_message
     puts <<~HELP
@@ -60,19 +81,6 @@ class SimpleWarehouse
   def exit
     puts 'Thank you for using simple_warehouse!'
     @live = false
-  end
-
-  def to_numbers_array
-    @to_numbers_array = (1..@size).map {|i| i}
-  end
-
-  def to_empty_array
-    @to_empty_array = @to_numbers_array.map {|i| i = ' '}
-  end
-
-  def to_grid
-    @grid = @to_empty_array.each_slice(col).to_a
-    @grid.transpose
   end
 
 end
