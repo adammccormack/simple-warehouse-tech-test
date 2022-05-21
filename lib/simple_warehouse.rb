@@ -28,6 +28,8 @@ class SimpleWarehouse
     @current_y = y
     set_warehouse_size
     to_numbers_array
+    to_empty_shelve_array
+    to_grid
   end
 
   def view
@@ -36,12 +38,20 @@ class SimpleWarehouse
 
   private
 
+  def to_empty_shelve_array
+    to_empty_shelve_array = to_numbers_array.map {|i| i = '  '}
+  end
+
   def set_warehouse_size
     @warehouse_size = @current_x*@current_y
   end
 
   def to_numbers_array
     to_numbers_array = (1..@warehouse_size).map {|i| i}
+  end
+
+  def to_grid
+    to_grid = to_empty_shelve_array.each_slice(@current_x).to_a
   end
 
   def show_help_message
