@@ -32,6 +32,14 @@ class SimpleWarehouse
     to_grid
   end
 
+  def store(x, y, w, h, p)
+    position_x = x
+    position_y = y
+    crate_size = w*h
+    product_type = p
+  end
+
+
   def view
     true
   end
