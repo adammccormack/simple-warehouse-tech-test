@@ -1,5 +1,10 @@
 class SimpleWarehouse
-  attr_accessor :x, :y
+  attr_reader :current_x, :current_y
+
+  def initialize(x = 0, y = 0)
+    @current_x = x
+    @current_y= y
+  end
 
   def run
     @live = true
@@ -19,13 +24,21 @@ class SimpleWarehouse
   end
 
   def init
-    x = get_x
-    y = get_y
+      
+  end
+
+  def set_x=(x)
+    @current_x = x
+  end
+
+  def set_y=(y)
+    @current_y = y
   end
 
   def view
     true
   end
+
 
   private
 
