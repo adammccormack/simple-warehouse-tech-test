@@ -1,9 +1,11 @@
 class SimpleWarehouse
   attr_reader :current_x, :current_y
+  attr_accessor :warehouse
 
   def initialize
     @current_x = 0
     @current_y = 0
+    @warehouse = []
   end
 
   def run
@@ -32,13 +34,18 @@ class SimpleWarehouse
     to_grid
   end
 
-  def store(x, y, w, h, p)
-    position_x = x
-    position_y = y
-    crate_size = w*h
-    product_type = p
+  def store(x, y)
+    position_x = x-1
+    position_y = y-1
+    starting_position = @warehouse[position_y][position_x]
+    # crate_size = w*h
+    # product_type = p
   end
 
+  def experiment
+    init(12,8)
+    store(4,3)
+  end
 
   def view
     true
@@ -60,6 +67,7 @@ class SimpleWarehouse
 
   def to_grid
     to_grid = to_empty_shelve_array.each_slice(@current_x).to_a
+    @warehouse = to_grid
   end
 
   def show_help_message
