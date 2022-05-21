@@ -1,9 +1,9 @@
 class SimpleWarehouse
   attr_reader :current_x, :current_y
 
-  def initialize(x = 0, y = 0)
-    @current_x = x
-    @current_y= y
+  def initialize
+    @current_x = 0
+    @current_y = 0
   end
 
   def run
@@ -26,11 +26,8 @@ class SimpleWarehouse
   def init(x, y)
     @current_x = x
     @current_y = y
-  end
-
-  def set_xy(x, y)
-    @current_x = x
-    @current_y = y
+    set_warehouse_size
+    to_numbers_array
   end
 
   def view
@@ -38,6 +35,14 @@ class SimpleWarehouse
   end
 
   private
+
+  def set_warehouse_size
+    @warehouse_size = @current_x*@current_y
+  end
+
+  def to_numbers_array
+    to_numbers_array = (1..@warehouse_size).map {|i| i}
+  end
 
   def show_help_message
     puts <<~HELP
