@@ -34,7 +34,17 @@ class SimpleWarehouse
     to_grid
   end
 
+  def decrement_y(y, h)
+    h = y-h
+    until y == h|| y == 0
+      y -= 1
+      puts y
+    end
+  end
 
+  def draw_line(y, x, w, h)
+    @warehouse[y][x..(x+w)] = @warehouse[y][x..(x+w)].map {|i| i = 'Q' }
+  end
 
   # how to replace the existing grid with the specific indexes you want with .map
 
@@ -49,36 +59,11 @@ class SimpleWarehouse
     # w.warehouse[5][2..(2+4)] = w.warehouse[5][2..(2+4)].map {|i| i = 'Q' }
 
 
-  # to iterate the whole nested array
-
-  # w.warehouse = w.warehouse.map {|i| i.map { |e|
-  # e = 'V' 
-  # }}
-
-
-  # fills width with product
-  # b.map.with_index { |val, idx| puts "#{idx} #{val}"
-  #     if idx >= 2 && idx <= 6
-  #         val = 'M'
-  #     else
-  #         val = val
-  #     end
-  #   }
-
-
-    # w.warehouse[3][2..(2+4)] = w.warehouse[3][2..(2+4)].map {|i| i = 'Q' }
-    # w.warehouse[4][2..(2+4)] = w.warehouse[4][2..(2+4)].map {|i| i = 'Q' }
+    # do this once, then on the next loop do it again with 5-1 instead, and so on
+    
     # w.warehouse[5][2..(2+4)] = w.warehouse[5][2..(2+4)].map {|i| i = 'Q' }
 
-
-
-
-    # w.warehouse[1][10..(10+2)] = w.warehouse[1][10..(10+2)].map {|i| i = 'Q' }
-    # w.warehouse[2][10..(10+2)] = w.warehouse[2][10..(10+2)].map {|i| i = 'Q' }
-    # w.warehouse[3][10..(10+2)] = w.warehouse[3][10..(10+2)].map {|i| i = 'Q' }
-    # w.warehouse[4][10..(10+2)] = w.warehouse[4][10..(10+2)].map {|i| i = 'Q' }
-    # w.warehouse[5][10..(10+2)] = w.warehouse[5][10..(10+2)].map {|i| i = 'Q' }
-
+    
 
   def store(x, y, w, h, p)
     position_x = x-1
@@ -87,7 +72,7 @@ class SimpleWarehouse
     crate_size = w*h
     product_type = p
   end
-  
+
 
   def experiment
     init(12,8)
