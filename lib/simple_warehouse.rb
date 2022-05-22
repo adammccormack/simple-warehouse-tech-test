@@ -34,6 +34,10 @@ class SimpleWarehouse
     to_grid
   end
 
+  # how to replace the existing grid with the specific indexes you want with .map
+
+  # a[1][2..11] = a[1][2..11].map {|i| i = 'F' }
+
   # to iterate the whole nested array
 
   # w.warehouse = w.warehouse.map {|i| i.map { |e|
@@ -51,8 +55,9 @@ class SimpleWarehouse
   #   }
 
   # counts from specific index to end
-  # a[2..-1].each do |i| 
-  #   puts i
+  # if you want from specific index to specific index then just replace the end index
+  # your_array[your_index..-1].each do |temp| 
+  #   ###
   # end
 
   # ALSO counts from specific index
@@ -73,6 +78,16 @@ class SimpleWarehouse
 # irb(main):153:0> w.warehouse[5][4..6]
 # => ["  ", "VB", "  "]
 # irb(main):154:0> 
+
+
+# [["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "],             
+#  ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "],             
+#  ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "],             
+#  ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "],             
+#  ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "],             
+#  ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "],             
+#  ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "],             
+#  ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "]] 
 
 
 
