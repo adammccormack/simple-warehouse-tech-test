@@ -37,14 +37,21 @@ class SimpleWarehouse
   def decrement_y(y, h)
     h = y-h
     until y == h|| y == 0
-      y -= 1
       puts y
+      y -= 1
     end
+    y
   end
 
-  def draw_line(y, x, w, h)
-    @warehouse[y][x..(x+w)] = @warehouse[y][x..(x+w)].map {|i| i = 'Q' }
+  def store(y, x, w, h)
+      h = y-h
+      @warehouse[y][x..(x+w)] = @warehouse[y][x..(x+w)].map {|i| i = 'Q' }
+      while y >= h
+        @warehouse[y-1][x..(x+w)] = @warehouse[y-1][x..(x+w)].map {|i| i = 'Q' }
+        y -= 1
+      end
   end
+
 
   # how to replace the existing grid with the specific indexes you want with .map
 
