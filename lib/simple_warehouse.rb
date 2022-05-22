@@ -43,7 +43,7 @@ class SimpleWarehouse
     y
   end
 
-  def store_crate(y, x, w, h)
+  def store(x, y, w, h)
       h = y-h
       y = y-1
       x = x-1
@@ -55,18 +55,8 @@ class SimpleWarehouse
       end
   end
 
-  def store(x, y, w, h, p)
-    position_x = x-1
-    position_y = y-1
-    starting_position = @warehouse[position_y][position_x]
-    crate_size = w*h
-    product_type = p
-  end
-
-
   def experiment
     init(12,8)
-    store(6,2,3,4,'P')
   end
 
   def view
