@@ -43,10 +43,13 @@ class SimpleWarehouse
     y
   end
 
-  def store(y, x, w, h)
+  def store_crate(y, x, w, h)
       h = y-h
+      y = y-1
+      x = x-1
+      w = w-1
       @warehouse[y][x..(x+w)] = @warehouse[y][x..(x+w)].map {|i| i = 'Q' }
-      while y >= h
+      while y > h
         @warehouse[y-1][x..(x+w)] = @warehouse[y-1][x..(x+w)].map {|i| i = 'Q' }
         y -= 1
       end
