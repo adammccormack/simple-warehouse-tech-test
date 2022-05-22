@@ -29,6 +29,9 @@ So that I can store product
 I would like to be able to store a crate of a given size in the warehouse
 
 
+As a User,
+So that I can locate a type of product
+I want to be able to see all locations where that product is located
 
 
 ```

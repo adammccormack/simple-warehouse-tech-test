@@ -34,33 +34,28 @@ class SimpleWarehouse
     to_grid
   end
 
-  def decrement_y(y, h)
-    h = y-h
-    until y == h|| y == 0
-      puts y
-      y -= 1
-    end
-    y
-  end
-
-  def store(x, y, w, h)
+  def store(x, y, w, h, p)
       h = y-h
       y = y-1
       x = x-1
       w = w-1
-      @warehouse[y][x..(x+w)] = @warehouse[y][x..(x+w)].map {|i| i = 'Q' }
+      @warehouse[y][x..(x+w)] = @warehouse[y][x..(x+w)].map {|i| i = p }
       while y > h
-        @warehouse[y-1][x..(x+w)] = @warehouse[y-1][x..(x+w)].map {|i| i = 'Q' }
+        @warehouse[y-1][x..(x+w)] = @warehouse[y-1][x..(x+w)].map {|i| i = p }
         y -= 1
       end
   end
 
-  def experiment
-    init(12,8)
+  def locate(p)
+    @warehouse.each_with_index {|y, i| y.each_with_index {|val, idx| 
+      if val == p
+      p "#{i}: #{idx}: #{val}" 
+      end
+    }}
   end
 
   def view
-    true
+    @warehouse
   end
 
   private
