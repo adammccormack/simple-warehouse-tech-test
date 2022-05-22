@@ -52,26 +52,6 @@ class SimpleWarehouse
       end
   end
 
-
-  # how to replace the existing grid with the specific indexes you want with .map
-
-  # a[1][2..11] = a[1][2..11].map {|i| i = 'F' }
-
-  # and it works!
-
-  # fills space with square 3x4 dimensions
-
-    # w.warehouse[3][2..(2+4)] = w.warehouse[3][2..(2+4)].map {|i| i = 'Q' }
-    # w.warehouse[4][2..(2+4)] = w.warehouse[4][2..(2+4)].map {|i| i = 'Q' }
-    # w.warehouse[5][2..(2+4)] = w.warehouse[5][2..(2+4)].map {|i| i = 'Q' }
-
-
-    # do this once, then on the next loop do it again with 5-1 instead, and so on
-    
-    # w.warehouse[5][2..(2+4)] = w.warehouse[5][2..(2+4)].map {|i| i = 'Q' }
-
-    
-
   def store(x, y, w, h, p)
     position_x = x-1
     position_y = y-1
