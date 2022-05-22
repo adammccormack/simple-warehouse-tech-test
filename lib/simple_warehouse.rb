@@ -34,6 +34,13 @@ class SimpleWarehouse
     to_grid
   end
 
+  # to iterate the whole nested array
+
+  # w.warehouse = w.warehouse.map {|i| i.map { |e|
+  # e = 'V' 
+  # }}
+
+
   # fills width with product
   # b.map.with_index { |val, idx| puts "#{idx} #{val}"
   #     if idx >= 2 && idx <= 6
@@ -43,6 +50,30 @@ class SimpleWarehouse
   #     end
   #   }
 
+  # counts from specific index to end
+  # a[2..-1].each do |i| 
+  #   puts i
+  # end
+
+  # ALSO counts from specific index
+#   a = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+
+# irb(main):147:0> a[3..12]
+# => [4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+
+
+# w.warehouse[3..5]
+# => 
+# [["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "],          
+#  ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "],          
+#  ["  ", "  ", "  ", "  ", "  ", "VB", "  ", "  ", "  ", "  ", "  ", "  "]]   
+
+# irb(main):152:0> w.warehouse[5][4..-1]
+# => ["  ", "VB", "  ", "  ", "  ", "  ", "  ", "  "]
+# irb(main):153:0> w.warehouse[5][4..6]
+# => ["  ", "VB", "  "]
+# irb(main):154:0> 
+
 
 
   def store(x, y, w, h, p)
@@ -51,36 +82,6 @@ class SimpleWarehouse
     starting_position = @warehouse[position_y][position_x]
     crate_size = w*h
     product_type = p
-    # replace zero based indexes warehouse[1] y 1,2,3 with 'P'
-
-    # example product P
-    # example w h = (4, 3)
-    # starting position is [6][2]
-    # I want it to keep incrementing [x] until it has counted the length of w i.e in this example (4)
-
-    # w = 4
-    # h = 3
-
-    # w.warehouse[6][2] = 'M'
-
-
-    # w.warehouse[6][2] = 'M'
-    # w.warehouse[6][3] = 'M'
-    # w.warehouse[6][4] = 'M'
-    # w.warehouse[6][5] = 'M'
-
-    # w.warehouse[5][2] = 'M'
-    # w.warehouse[5][3] = 'M'
-    # w.warehouse[5][4] = 'M'
-    # w.warehouse[5][5] = 'M'
-
-    # w.warehouse[4][2] = 'M'
-    # w.warehouse[4][3] = 'M'
-    # w.warehouse[4][4] = 'M'
-    # w.warehouse[4][5] = 'M'
-
-
-
   end
 
   def experiment
