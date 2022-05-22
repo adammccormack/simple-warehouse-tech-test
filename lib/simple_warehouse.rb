@@ -1,9 +1,11 @@
 class SimpleWarehouse
   attr_reader :current_x, :current_y
+  attr_accessor :warehouse
 
   def initialize
     @current_x = 0
     @current_y = 0
+    @warehouse = []
   end
 
   def run
@@ -32,13 +34,57 @@ class SimpleWarehouse
     to_grid
   end
 
+  def decrement_y(y, h)
+    h = y-h
+    until y == h|| y == 0
+      puts y
+      y -= 1
+    end
+    y
+  end
+
+  def store(y, x, w, h)
+      h = y-h
+      @warehouse[y][x..(x+w)] = @warehouse[y][x..(x+w)].map {|i| i = 'Q' }
+      while y >= h
+        @warehouse[y-1][x..(x+w)] = @warehouse[y-1][x..(x+w)].map {|i| i = 'Q' }
+        y -= 1
+      end
+  end
+
+
+  # how to replace the existing grid with the specific indexes you want with .map
+
+  # a[1][2..11] = a[1][2..11].map {|i| i = 'F' }
+
+  # and it works!
+
+  # fills space with square 3x4 dimensions
+
+    # w.warehouse[3][2..(2+4)] = w.warehouse[3][2..(2+4)].map {|i| i = 'Q' }
+    # w.warehouse[4][2..(2+4)] = w.warehouse[4][2..(2+4)].map {|i| i = 'Q' }
+    # w.warehouse[5][2..(2+4)] = w.warehouse[5][2..(2+4)].map {|i| i = 'Q' }
+
+
+    # do this once, then on the next loop do it again with 5-1 instead, and so on
+    
+    # w.warehouse[5][2..(2+4)] = w.warehouse[5][2..(2+4)].map {|i| i = 'Q' }
+
+    
+
   def store(x, y, w, h, p)
-    position_x = x
-    position_y = y
+    position_x = x-1
+    position_y = y-1
+    starting_position = @warehouse[position_y][position_x]
     crate_size = w*h
     product_type = p
   end
 
+
+  def experiment
+    init(12,8)
+    store(6,2,3,4,'P')
+  end
 
   def view
     true
@@ -47,7 +93,7 @@ class SimpleWarehouse
   private
 
   def to_empty_shelve_array
-    to_empty_shelve_array = to_numbers_array.map {|i| i = '  '}
+    to_empty_shelve_array = to_numbers_array.map {|i| i = ' '}
   end
 
   def set_warehouse_size
@@ -60,6 +106,7 @@ class SimpleWarehouse
 
   def to_grid
     to_grid = to_empty_shelve_array.each_slice(@current_x).to_a
+    @warehouse = to_grid
   end
 
   def show_help_message
