@@ -39,7 +39,7 @@ class SimpleWarehouse
   #     if idx >= 2 && idx <= 6
   #         val = 'M'
   #     else
-  #         val = ' '
+  #         val = val
   #     end
   #   }
 
