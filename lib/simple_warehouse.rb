@@ -34,9 +34,20 @@ class SimpleWarehouse
     to_grid
   end
 
+
+
   # how to replace the existing grid with the specific indexes you want with .map
 
   # a[1][2..11] = a[1][2..11].map {|i| i = 'F' }
+
+  # and it works!
+
+  # fills space with square 3x4 dimensions
+
+    # w.warehouse[3][2..(2+4)] = w.warehouse[3][2..(2+4)].map {|i| i = 'Q' }
+    # w.warehouse[4][2..(2+4)] = w.warehouse[4][2..(2+4)].map {|i| i = 'Q' }
+    # w.warehouse[5][2..(2+4)] = w.warehouse[5][2..(2+4)].map {|i| i = 'Q' }
+
 
   # to iterate the whole nested array
 
@@ -54,41 +65,19 @@ class SimpleWarehouse
   #     end
   #   }
 
-  # counts from specific index to end
-  # if you want from specific index to specific index then just replace the end index
-  # your_array[your_index..-1].each do |temp| 
-  #   ###
-  # end
 
-  # ALSO counts from specific index
-#   a = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
-
-# irb(main):147:0> a[3..12]
-# => [4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+    # w.warehouse[3][2..(2+4)] = w.warehouse[3][2..(2+4)].map {|i| i = 'Q' }
+    # w.warehouse[4][2..(2+4)] = w.warehouse[4][2..(2+4)].map {|i| i = 'Q' }
+    # w.warehouse[5][2..(2+4)] = w.warehouse[5][2..(2+4)].map {|i| i = 'Q' }
 
 
-# w.warehouse[3..5]
-# => 
-# [["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "],          
-#  ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "],          
-#  ["  ", "  ", "  ", "  ", "  ", "VB", "  ", "  ", "  ", "  ", "  ", "  "]]   
-
-# irb(main):152:0> w.warehouse[5][4..-1]
-# => ["  ", "VB", "  ", "  ", "  ", "  ", "  ", "  "]
-# irb(main):153:0> w.warehouse[5][4..6]
-# => ["  ", "VB", "  "]
-# irb(main):154:0> 
 
 
-# [["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "],             
-#  ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "],             
-#  ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "],             
-#  ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "],             
-#  ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "],             
-#  ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "],             
-#  ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "],             
-#  ["  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  ", "  "]] 
-
+    # w.warehouse[1][10..(10+2)] = w.warehouse[1][10..(10+2)].map {|i| i = 'Q' }
+    # w.warehouse[2][10..(10+2)] = w.warehouse[2][10..(10+2)].map {|i| i = 'Q' }
+    # w.warehouse[3][10..(10+2)] = w.warehouse[3][10..(10+2)].map {|i| i = 'Q' }
+    # w.warehouse[4][10..(10+2)] = w.warehouse[4][10..(10+2)].map {|i| i = 'Q' }
+    # w.warehouse[5][10..(10+2)] = w.warehouse[5][10..(10+2)].map {|i| i = 'Q' }
 
 
   def store(x, y, w, h, p)
@@ -98,6 +87,7 @@ class SimpleWarehouse
     crate_size = w*h
     product_type = p
   end
+  
 
   def experiment
     init(12,8)
@@ -111,7 +101,7 @@ class SimpleWarehouse
   private
 
   def to_empty_shelve_array
-    to_empty_shelve_array = to_numbers_array.map {|i| i = '  '}
+    to_empty_shelve_array = to_numbers_array.map {|i| i = ' '}
   end
 
   def set_warehouse_size
