@@ -43,4 +43,16 @@ As a User,
 So that I can end the application,
 I would like a exit option
 
+As a User,
+So that I know if the warehouse storage position doesn't exist when storing,
+I'd like to receive an error message explaining this
+
+As a User,
+So that I know my crate doesn't fit in the space when storing,
+I'd like to receive a error message explaining this
+
+As a User,
+So that I know a crate doesn't exist when trying to remove crates,
+I'd like to receive a error message explaining this
+
 ```
