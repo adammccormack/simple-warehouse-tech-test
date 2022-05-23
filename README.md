@@ -25,13 +25,17 @@ So that I can store products,
 I want to be able to create a empty warehouse with a given length and height integer
 
 As a User,
-So that I can store product
+So that I can store product,
 I would like to be able to store a crate of a given size in the warehouse
 
 
 As a User,
-So that I can locate a type of product
+So that I can locate a type of product,
 I want to be able to see all locations where that product is located
+
+As a User,
+So that I can remove a crate of product from the shelf,
+I would like to be able to remove the product
 
 
 ```

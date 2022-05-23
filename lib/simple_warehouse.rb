@@ -35,15 +35,29 @@ class SimpleWarehouse
   end
 
   def store(x, y, w, h, p)
-      h = y-h
+      h = h-1
       y = y-1
       x = x-1
       w = w-1
+      h = y-h
       @warehouse[y][x..(x+w)] = @warehouse[y][x..(x+w)].map {|i| i = p }
       while y > h
         @warehouse[y-1][x..(x+w)] = @warehouse[y-1][x..(x+w)].map {|i| i = p }
         y -= 1
       end
+  end
+  
+  def remove(x, y, w, h)
+    h = h-1
+    y = y-1
+    x = x-1
+    w = w-1
+    h = y-h
+    @warehouse[y][x..(x+w)] = @warehouse[y][x..(x+w)].map {|i| i = ' ' }
+    while y > h
+      @warehouse[y-1][x..(x+w)] = @warehouse[y-1][x..(x+w)].map {|i| i = ' ' }
+      y -= 1
+    end
   end
 
   def locate(p)
