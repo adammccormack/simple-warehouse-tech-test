@@ -44,7 +44,7 @@ class SimpleWarehouse
         fail "Sorry can't put that there : ("
       elsif h < 0 || h > @warehouse.length
         fail "Sorry can't put that there : ("
-      elsif x > @warehouse[y].length-1
+      elsif x < 0 || x > @warehouse[y].length
         fail "Sorry can't put that there : ("
       elsif w > @warehouse[y][x..-1].length
         fail "Sorry can't put that there : ("
@@ -59,10 +59,11 @@ class SimpleWarehouse
   
   def remove(x, y, w, h)
     h = h-1
-    y = y-1
+    y = y-1 
     x = x-1
     w = w-1
     h = y-h
+    fail "sorry nothing there : (" if x || y == ' '
     @warehouse[y][x..(x+w)] = @warehouse[y][x..(x+w)].map {|i| i = ' ' }
     while y > h
       @warehouse[y-1][x..(x+w)] = @warehouse[y-1][x..(x+w)].map {|i| i = ' ' }
