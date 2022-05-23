@@ -28,7 +28,6 @@ As a User,
 So that I can store product,
 I would like to be able to store a crate of a given size in the warehouse
 
-
 As a User,
 So that I can locate a type of product,
 I want to be able to see all locations where that product is located
@@ -36,6 +35,14 @@ I want to be able to see all locations where that product is located
 As a User,
 So that I can remove a crate of product from the shelf,
 I would like to be able to remove the product
+
+As a User,
+So that I can view availability of spaces in the warehouse,
+I would like to be able to view the warehouse state
+
+As a User,
+So that I can end the application,
+I would like a exit option
 
 
 ```
