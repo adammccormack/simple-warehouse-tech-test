@@ -72,6 +72,10 @@ class SimpleWarehouse
     @warehouse
   end
 
+  def quit
+    exit
+  end
+
   private
 
   def to_empty_shelve_array
