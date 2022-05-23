@@ -13,7 +13,6 @@ It accepts the following 7 commands:
 | `view` | Output a visual representation of the current state of the grid.<br>Position (1,1) should be at the bottom left position on the grid and (1, H) should be the top left. |
 | `exit` | Exits the application. |
 
-
 # User Stories #
 ```
 As a User,
@@ -43,6 +42,5 @@ I would like to be able to view the warehouse state
 As a User,
 So that I can end the application,
 I would like a exit option
-
 
 ```

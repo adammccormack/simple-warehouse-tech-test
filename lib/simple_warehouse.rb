@@ -72,6 +72,10 @@ class SimpleWarehouse
     @warehouse
   end
 
+  def quit
+    exit
+  end
+
   private
 
   def to_empty_shelve_array
@@ -85,7 +89,7 @@ class SimpleWarehouse
   def to_numbers_array
     to_numbers_array = (1..@warehouse_size).map {|i| i}
   end
-  
+
   def to_grid
     to_grid = to_empty_shelve_array.each_slice(@current_x).to_a
     @warehouse = to_grid
