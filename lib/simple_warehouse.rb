@@ -40,6 +40,16 @@ class SimpleWarehouse
       x = x-1
       w = w-1
       h = y-h
+      if y < 0 || y > @warehouse.length
+        fail "Sorry can't put that there : ("
+      elsif h < 0 || h > @warehouse.length
+        fail "Sorry can't put that there : ("
+      elsif x > @warehouse[y].length-1
+        fail "Sorry can't put that there : ("
+      elsif w > @warehouse[y][x..-1].length
+        fail "Sorry can't put that there : ("
+      else
+      end
       @warehouse[y][x..(x+w)] = @warehouse[y][x..(x+w)].map {|i| i = p }
       while y > h
         @warehouse[y-1][x..(x+w)] = @warehouse[y-1][x..(x+w)].map {|i| i = p }
