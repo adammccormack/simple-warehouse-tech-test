@@ -1,11 +1,15 @@
+# frozen_string_literal: true
+require_relative 'storage'
+
 class SimpleWarehouse
   attr_reader :current_x, :current_y
   attr_accessor :warehouse
 
-  def initialize
+  def initialize(storage = Storage.new)
     @current_x = 0
     @current_y = 0
     @warehouse = []
+    @storage = storage
   end
 
   def run
@@ -15,12 +19,12 @@ class SimpleWarehouse
       print '> '
       command = gets.chomp
       case command
-        when 'help'
-          show_help_message
-        when 'exit'
-          exit
-        else
-          show_unrecognized_message
+      when 'help'
+        show_help_message
+      when 'exit'
+        exit
+      else
+        show_unrecognized_message
       end
     end
   end
@@ -35,47 +39,21 @@ class SimpleWarehouse
   end
 
   def store(x, y, w, h, p)
-      h = h-1
-      y = y-1
-      x = x-1
-      w = w-1
-      h = y-h
-      if y < 0 || y > @warehouse.length
-        fail "Sorry can't put that there : ("
-      elsif h < 0 || h > @warehouse.length
-        fail "Sorry can't put that there : ("
-      elsif x > @warehouse[y].length-1
-        fail "Sorry can't put that there : ("
-      elsif w > @warehouse[y][x..-1].length
-        fail "Sorry can't put that there : ("
-      else
-      end
-      @warehouse[y][x..(x+w)] = @warehouse[y][x..(x+w)].map {|i| i = p }
-      while y > h
-        @warehouse[y-1][x..(x+w)] = @warehouse[y-1][x..(x+w)].map {|i| i = p }
-        y -= 1
-      end
+    warehouse = @warehouse
+    @storage.store_product_at_location(warehouse, x, y, w, h, p)
   end
-  
+
   def remove(x, y, w, h)
-    h = h-1
-    y = y-1
-    x = x-1
-    w = w-1
-    h = y-h
-    @warehouse[y][x..(x+w)] = @warehouse[y][x..(x+w)].map {|i| i = ' ' }
-    while y > h
-      @warehouse[y-1][x..(x+w)] = @warehouse[y-1][x..(x+w)].map {|i| i = ' ' }
-      y -= 1
-    end
+    warehouse = @warehouse
+    @storage.remove_product_at_location(warehouse,x, y, w, h)
   end
 
   def locate(p)
-    @warehouse.each_with_index {|y, i| y.each_with_index {|val, idx| 
-      if val == p
-      p "#{i}: #{idx}: #{val}" 
+    @warehouse.each_with_index do |y, i|
+      y.each_with_index do |val, idx|
+        p "#{i}: #{idx}: #{val}" if val == p
       end
-    }}
+    end
   end
 
   def view
@@ -89,15 +67,15 @@ class SimpleWarehouse
   private
 
   def to_empty_shelve_array
-    to_empty_shelve_array = to_numbers_array.map {|i| i = ' '}
+    to_empty_shelve_array = to_numbers_array.map { |_i| i = ' ' }
   end
 
   def set_warehouse_size
-    @warehouse_size = @current_x*@current_y
+    @warehouse_size = @current_x * @current_y
   end
 
   def to_numbers_array
-    to_numbers_array = (1..@warehouse_size).map {|i| i}
+    to_numbers_array = (1..@warehouse_size).map { |i| i }
   end
 
   def to_grid
@@ -126,4 +104,5 @@ class SimpleWarehouse
     @live = false
   end
 
+  
 end
