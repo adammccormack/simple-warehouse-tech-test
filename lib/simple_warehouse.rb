@@ -1,13 +1,15 @@
 # frozen_string_literal: true
+require_relative 'storage'
 
 class SimpleWarehouse
   attr_reader :current_x, :current_y
   attr_accessor :warehouse
 
-  def initialize(storing: Storage.new)
+  def initialize(storage = Storage.new)
     @current_x = 0
     @current_y = 0
     @warehouse = []
+    @storage = storage
   end
 
   def run
@@ -34,6 +36,16 @@ class SimpleWarehouse
     to_numbers_array
     to_empty_shelve_array
     to_grid
+  end
+
+  def store(x, y, w, h, p)
+    warehouse = @warehouse
+    @storage.store_product_at_location(warehouse, x, y, w, h, p)
+  end
+
+  def remove(x, y, w, h)
+    warehouse = @warehouse
+    @storage.remove_product_at_location(warehouse,x, y, w, h)
   end
 
   def locate(p)
@@ -91,4 +103,6 @@ class SimpleWarehouse
     puts 'Thank you for using simple_warehouse!'
     @live = false
   end
+
+  
 end
