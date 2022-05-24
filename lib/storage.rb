@@ -1,19 +1,5 @@
 
 class Storage
-  
-  # def(data_passed_in_from_SimpleWarehouse)
-  
-  # end
-
-  # def store(x, y, w, h, p)
-  #   h -= 1
-  #   y -= 1
-  #   x -= 1
-  #   w -= 1
-  #   h = y - h
-  #   # raise_store_error(x, y, w, h)
-  #   store_product_at_location(x,y,w,h,p)
-  # end
 
   def store_product_at_location(warehouse,x,y,w,h,p)
     h -= 1
