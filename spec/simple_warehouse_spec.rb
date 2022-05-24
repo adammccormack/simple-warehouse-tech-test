@@ -43,12 +43,24 @@ describe SimpleWarehouse do
       warehouse = SimpleWarehouse.new
       warehouse.init(2,2)
       warehouse.store(1,1,1,1,'P')
-      
+
       warehouse.remove(1,1,1,1)
 
       expect(warehouse.view).to match_array(output)
     end
   end
 
+  describe '#locate' do
+      locate_output = "\"0: 0: P\"\n\"0: 1: P\"\n\"1: 0: P\"\n\"1: 1: P\"\n"
+      
+      it 'returns all index locations/values of product' do
+        warehouse = SimpleWarehouse.new
+        warehouse.init(3,3)
+        warehouse.store(1,2,2,2,'P')
 
+
+        expect { warehouse.locate('P') }.to output(locate_output).to_stdout
+      end
+  end
 end
+
