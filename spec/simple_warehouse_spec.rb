@@ -5,6 +5,16 @@ require 'simple_warehouse'
 describe SimpleWarehouse do
   it { is_expected.to respond_to(:init) }
 
+
+  describe '#run' do
+    it 'confirms run' do
+        warehouse = double('warehouse')
+        allow(warehouse).to receive(:live).and_return(true) 
+        
+        expect(warehouse.live).to eq(true)
+    end
+  end
+
   describe '#init' do
     let(:output) {
       [[' ', ' '],
@@ -38,7 +48,7 @@ describe SimpleWarehouse do
     let(:output) {
       [[' ', ' '],
        [' ', ' ']]
-  }
+    }
     it 'removes any product at given location' do
       warehouse = SimpleWarehouse.new
       warehouse.init(2,2)
