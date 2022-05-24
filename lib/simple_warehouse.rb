@@ -30,7 +30,9 @@ class SimpleWarehouse
     end
   end
 
-  def init(x, y)
+  def init(w, h)
+    x = w
+    y = h
     @current_x = x
     @current_y = y
     set_warehouse_size
