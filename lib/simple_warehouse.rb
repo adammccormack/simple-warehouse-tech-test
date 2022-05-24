@@ -34,10 +34,10 @@ class SimpleWarehouse
     @current_y = y
     set_warehouse_size
     to_numbers_array
-    to_empty_shelve_array
+    to_empty_shelf_array
     to_grid
   end
-
+  
   def store(x, y, w, h, p)
     warehouse = @warehouse
     @storage.store_product_at_location(warehouse, x, y, w, h, p)
@@ -49,11 +49,7 @@ class SimpleWarehouse
   end
 
   def locate(p)
-    @warehouse.each_with_index do |y, i|
-      y.each_with_index do |val, idx|
-        p "#{i}: #{idx}: #{val}" if val == p
-      end
-    end
+    find(p)
   end
 
   def view
@@ -66,8 +62,16 @@ class SimpleWarehouse
 
   private
 
-  def to_empty_shelve_array
-    to_empty_shelve_array = to_numbers_array.map { |_i| i = ' ' }
+  def find(p)
+    @warehouse.each_with_index do |y, i|
+      y.each_with_index do |val, idx|
+        p "#{i}: #{idx}: #{val}" if val == p
+      end
+    end
+  end
+
+  def to_empty_shelf_array
+    to_empty_shelf_array = to_numbers_array.map { |_i| i = ' ' }
   end
 
   def set_warehouse_size
@@ -79,7 +83,7 @@ class SimpleWarehouse
   end
 
   def to_grid
-    to_grid = to_empty_shelve_array.each_slice(@current_x).to_a
+    to_grid = to_empty_shelf_array.each_slice(@current_x).to_a
     @warehouse = to_grid
   end
 
