@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SimpleWarehouse
   attr_reader :current_x, :current_y
   attr_accessor :warehouse
@@ -15,12 +17,12 @@ class SimpleWarehouse
       print '> '
       command = gets.chomp
       case command
-        when 'help'
-          show_help_message
-        when 'exit'
-          exit
-        else
-          show_unrecognized_message
+      when 'help'
+        show_help_message
+      when 'exit'
+        exit
+      else
+        show_unrecognized_message
       end
     end
   end
@@ -33,50 +35,38 @@ class SimpleWarehouse
     to_empty_shelve_array
     to_grid
   end
-
-  def store(x, y, w, h, p)
-      h = h-1
-      y = y-1
-      x = x-1
-      w = w-1
-      h = y-h
-      if y < 0 || y > @warehouse.length
-        fail "Sorry can't put that there : ("
-      elsif h < 0 || h > @warehouse.length
-        fail "Sorry can't put that there : ("
-      elsif x < 0 || x > @warehouse[y].length
-        fail "Sorry can't put that there : ("
-      elsif w > @warehouse[y][x..-1].length
-        fail "Sorry can't put that there : ("
-      else
-      end
-      @warehouse[y][x..(x+w)] = @warehouse[y][x..(x+w)].map {|i| i = p }
-      while y > h
-        @warehouse[y-1][x..(x+w)] = @warehouse[y-1][x..(x+w)].map {|i| i = p }
-        y -= 1
-      end
-  end
   
+  def store(x, y, w, h, p)
+    h -= 1
+    y -= 1
+    x -= 1
+    w -= 1
+    h = y - h
+    raise_store_error(x, y, w, h)
+    store_product_at_location(x,y,w,h,p)
+  end
+
   def remove(x, y, w, h)
-    h = h-1
-    y = y-1 
-    x = x-1
-    w = w-1
-    h = y-h
-    fail "sorry nothing there : (" if x || y == ' '
-    @warehouse[y][x..(x+w)] = @warehouse[y][x..(x+w)].map {|i| i = ' ' }
+    h -= 1
+    y -= 1
+    x -= 1
+    w -= 1
+    h = y - h
+    raise 'sorry nothing there : (' if x || y == ' '
+
+    @warehouse[y][x..(x + w)] = @warehouse[y][x..(x + w)].map { |_i| i = ' ' }
     while y > h
-      @warehouse[y-1][x..(x+w)] = @warehouse[y-1][x..(x+w)].map {|i| i = ' ' }
+      @warehouse[y - 1][x..(x + w)] = @warehouse[y - 1][x..(x + w)].map { |_i| i = ' ' }
       y -= 1
     end
   end
 
   def locate(p)
-    @warehouse.each_with_index {|y, i| y.each_with_index {|val, idx| 
-      if val == p
-      p "#{i}: #{idx}: #{val}" 
+    @warehouse.each_with_index do |y, i|
+      y.each_with_index do |val, idx|
+        p "#{i}: #{idx}: #{val}" if val == p
       end
-    }}
+    end
   end
 
   def view
@@ -87,23 +77,46 @@ class SimpleWarehouse
     exit
   end
 
+
   private
+  
+
 
   def to_empty_shelve_array
-    to_empty_shelve_array = to_numbers_array.map {|i| i = ' '}
+    to_empty_shelve_array = to_numbers_array.map { |_i| i = ' ' }
   end
 
   def set_warehouse_size
-    @warehouse_size = @current_x*@current_y
+    @warehouse_size = @current_x * @current_y
   end
 
   def to_numbers_array
-    to_numbers_array = (1..@warehouse_size).map {|i| i}
+    to_numbers_array = (1..@warehouse_size).map { |i| i }
   end
 
   def to_grid
     to_grid = to_empty_shelve_array.each_slice(@current_x).to_a
     @warehouse = to_grid
+  end
+
+  def raise_store_error(x, y, w, h)
+    if y.negative? || y > @warehouse.length
+      raise "Sorry can't put that there : ("
+    elsif h.negative? || h > @warehouse.length
+      raise "Sorry can't put that there : ("
+    elsif x.negative? || x > @warehouse[y].length
+      raise "Sorry can't put that there : ("
+    elsif w > @warehouse[y][x..].length
+      raise "Sorry can't put that there : ("
+    end
+  end
+
+  def store_product_at_location(x,y,w,h,p)
+    @warehouse[y][x..(x + w)] = @warehouse[y][x..(x + w)].map { |_i| i = p }
+    while y > h
+      @warehouse[y - 1][x..(x + w)] = @warehouse[y - 1][x..(x + w)].map { |_i| i = p }
+      y -= 1
+    end
   end
 
   def show_help_message
@@ -126,5 +139,4 @@ class SimpleWarehouse
     puts 'Thank you for using simple_warehouse!'
     @live = false
   end
-
 end
