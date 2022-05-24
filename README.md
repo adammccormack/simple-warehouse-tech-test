@@ -28,7 +28,10 @@ Ruby version: 3.1.2
 
 - irb -r './lib/simple_warehouse'
 
-5. 
+5. Then type in the terminal 'warehouse = SimpleWarehouse.new' and press enter.
+
+6. Then 'warehouse.run' and press enter, here you will be presented with all the instructions with a list of the commands available to use the program : ).
+
 
 # User Stories #
 ```
