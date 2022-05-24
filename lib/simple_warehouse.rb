@@ -37,7 +37,7 @@ class SimpleWarehouse
     to_empty_shelf_array
     to_grid
   end
-
+  
   def store(x, y, w, h, p)
     warehouse = @warehouse
     @storage.store_product_at_location(warehouse, x, y, w, h, p)

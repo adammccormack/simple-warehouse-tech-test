@@ -20,9 +20,17 @@ describe SimpleWarehouse do
   end
 
   describe '#store' do
+    let(:output) do
+      [['P', ' '],
+       [' ', ' ']]
+    end
     it 'stores product at given location' do
+      warehouse = SimpleWarehouse.new
+      warehouse.init(2,2)
 
+      warehouse.store(1,1,1,1,'P')
+
+      expect(warehouse.view).to match_array(output)
     end
   end
-
 end
