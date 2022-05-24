@@ -26,10 +26,11 @@ class Storage
 
   def raise_store_error(warehouse,x, y, w, h)
     store_error_message = "Sorry can't put that there : ("
-    raise error_message if y.negative? || y > warehouse.length
-    raise error_message if h.negative? || h > warehouse.length
-    raise error_message if x.negative? || x > warehouse[y].length
-    raise error_message if w > warehouse[y][x..].length
+    raise store_error_message if warehouse[y][x] != ' '
+    raise store_error_message if y.negative? || y > warehouse.length
+    raise store_error_message if h.negative? || h > warehouse.length
+    raise store_error_message if x.negative? || x > warehouse[y].length
+    raise store_error_message if w > warehouse[y][x..].length
   end
   
   def raise_remove_error(warehouse,x, y, w, h)
