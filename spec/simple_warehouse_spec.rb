@@ -33,4 +33,22 @@ describe SimpleWarehouse do
       expect(warehouse.view).to match_array(output)
     end
   end
+
+  describe '#remove' do
+    let(:output) do
+      [[' ', ' '],
+       [' ', ' ']]
+    end
+    it 'removes any product at given location' do
+      warehouse = SimpleWarehouse.new
+      warehouse.init(2,2)
+      warehouse.store(1,1,1,1,'P')
+      
+      warehouse.remove(1,1,1,1)
+
+      expect(warehouse.view).to match_array(output)
+    end
+  end
+
+
 end
