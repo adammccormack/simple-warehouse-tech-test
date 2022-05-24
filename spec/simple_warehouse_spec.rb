@@ -3,7 +3,16 @@
 require 'simple_warehouse'
 
 describe SimpleWarehouse do
+  subject(:warehouse) { described_class.new }
+
+  it { is_expected.to respond_to(:run) }
   it { is_expected.to respond_to(:init).with(2).argument }
+  it { is_expected.to respond_to(:store).with(5).argument }
+  it { is_expected.to respond_to(:remove).with(4).argument }
+  it { is_expected.to respond_to(:locate).with(1).argument }
+  it { is_expected.to respond_to(:view) }
+  it { is_expected.to respond_to(:quit) }
+
 
   describe '#run' do
     it 'confirms run' do
@@ -22,8 +31,6 @@ describe SimpleWarehouse do
        [' ', ' ']]
     }
     it 'initialises a new warehouse' do
-      warehouse = SimpleWarehouse.new
-
       result = warehouse.init(2,2)
 
       expect(result).to match_array(output)
@@ -36,7 +43,6 @@ describe SimpleWarehouse do
        [' ', ' ']]
     }
     it 'stores product at given location' do
-      warehouse = SimpleWarehouse.new
       warehouse.init(2,2)
 
       warehouse.store(1,1,1,1,'P')
@@ -51,7 +57,6 @@ describe SimpleWarehouse do
        [' ', ' ']]
     }
     it 'removes any product at given location' do
-      warehouse = SimpleWarehouse.new
       warehouse.init(2,2)
       warehouse.store(1,1,1,1,'P')
 
@@ -64,7 +69,6 @@ describe SimpleWarehouse do
   describe '#locate' do
     locate_output = "\"0: 0: P\"\n\"0: 1: P\"\n\"1: 0: P\"\n\"1: 1: P\"\n"
     it 'returns all index locations/values of product' do
-      warehouse = SimpleWarehouse.new
       warehouse.init(3,3)
       warehouse.store(1,2,2,2,'P')
       expect { warehouse.locate('P') }.to output(locate_output).to_stdout
@@ -77,8 +81,6 @@ describe SimpleWarehouse do
        [' ', ' ']]
     }
     it 'returns a view of the current warehouse state' do
-      
-      warehouse = SimpleWarehouse.new
       warehouse.init(2,2)
       warehouse.store(1,1,1,1,'P')
 
