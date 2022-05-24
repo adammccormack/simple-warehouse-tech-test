@@ -13,54 +13,53 @@ describe SimpleWarehouse do
   it { is_expected.to respond_to(:view) }
   it { is_expected.to respond_to(:quit) }
 
-
   describe '#run' do
     it 'confirms run' do
-        warehouse = double('warehouse')
-        allow(warehouse).to receive(:run).and_return(true) 
-        
-        result = warehouse.run
+      warehouse = double('warehouse')
+      allow(warehouse).to receive(:run).and_return(true)
 
-        expect(result).to eq(true)
+      result = warehouse.run
+
+      expect(result).to eq(true)
     end
   end
 
   describe '#init' do
-    let(:output) {
+    let(:output) do
       [[' ', ' '],
        [' ', ' ']]
-    }
+    end
     it 'initialises a new warehouse' do
-      result = warehouse.init(2,2)
+      result = warehouse.init(2, 2)
 
       expect(result).to match_array(output)
     end
   end
 
   describe '#store' do
-    let(:output) {
+    let(:output) do
       [['P', ' '],
        [' ', ' ']]
-    }
+    end
     it 'stores product at given location' do
-      warehouse.init(2,2)
+      warehouse.init(2, 2)
 
-      warehouse.store(1,1,1,1,'P')
+      warehouse.store(1, 1, 1, 1, 'P')
 
       expect(warehouse.view).to match_array(output)
     end
   end
 
   describe '#remove' do
-    let(:output) {
+    let(:output) do
       [[' ', ' '],
        [' ', ' ']]
-    }
+    end
     it 'removes any product at given location' do
-      warehouse.init(2,2)
-      warehouse.store(1,1,1,1,'P')
+      warehouse.init(2, 2)
+      warehouse.store(1, 1, 1, 1, 'P')
 
-      warehouse.remove(1,1,1,1)
+      warehouse.remove(1, 1, 1, 1)
 
       expect(warehouse.view).to match_array(output)
     end
@@ -69,23 +68,22 @@ describe SimpleWarehouse do
   describe '#locate' do
     locate_output = "\"0: 0: P\"\n\"0: 1: P\"\n\"1: 0: P\"\n\"1: 1: P\"\n"
     it 'returns all index locations/values of product' do
-      warehouse.init(3,3)
-      warehouse.store(1,2,2,2,'P')
+      warehouse.init(3, 3)
+      warehouse.store(1, 2, 2, 2, 'P')
       expect { warehouse.locate('P') }.to output(locate_output).to_stdout
     end
   end
 
   describe '#view' do
-    let (:output) { 
+    let(:output) do
       [['P', ' '],
        [' ', ' ']]
-    }
+    end
     it 'returns a view of the current warehouse state' do
-      warehouse.init(2,2)
-      warehouse.store(1,1,1,1,'P')
+      warehouse.init(2, 2)
+      warehouse.store(1, 1, 1, 1, 'P')
 
       expect(warehouse.view).to match_array(output)
     end
   end
 end
-

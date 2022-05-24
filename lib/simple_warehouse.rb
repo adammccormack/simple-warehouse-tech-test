@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require_relative 'storage'
 
 class SimpleWarehouse
@@ -37,7 +38,7 @@ class SimpleWarehouse
     to_empty_shelf_array
     to_grid
   end
-  
+
   def store(x, y, w, h, p)
     warehouse = @warehouse
     @storage.store_product_at_location(warehouse, x, y, w, h, p)
@@ -45,7 +46,7 @@ class SimpleWarehouse
 
   def remove(x, y, w, h)
     warehouse = @warehouse
-    @storage.remove_product_at_location(warehouse,x, y, w, h)
+    @storage.remove_product_at_location(warehouse, x, y, w, h)
   end
 
   def locate(p)
@@ -107,6 +108,4 @@ class SimpleWarehouse
     puts 'Thank you for using simple_warehouse!'
     @live = false
   end
-
-  
 end
