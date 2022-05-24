@@ -22,9 +22,9 @@ class Storage
     w -= 1
     h = y - h
     raise_remove_error(warehouse,x, y, w, h)
-    @warehouse[y][x..(x + w)] = @warehouse[y][x..(x + w)].map { |_i| i = ' ' }
+    warehouse[y][x..(x + w)] = warehouse[y][x..(x + w)].map { |_i| i = ' ' }
     while y > h
-      @warehouse[y - 1][x..(x + w)] = @warehouse[y - 1][x..(x + w)].map { |_i| i = ' ' }
+      warehouse[y - 1][x..(x + w)] = warehouse[y - 1][x..(x + w)].map { |_i| i = ' ' }
       y -= 1
     end
   end
