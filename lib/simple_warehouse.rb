@@ -4,7 +4,7 @@ class SimpleWarehouse
   attr_reader :current_x, :current_y
   attr_accessor :warehouse
 
-  def initialize
+  def initialize(storing: Storage.new)
     @current_x = 0
     @current_y = 0
     @warehouse = []
@@ -36,26 +36,6 @@ class SimpleWarehouse
     to_grid
   end
 
-  def store(x, y, w, h, p)
-    h -= 1
-    y -= 1
-    x -= 1
-    w -= 1
-    h = y - h
-    raise_store_error(x, y, w, h)
-    store_product_at_location(x,y,w,h,p)
-  end
-
-  def remove(x, y, w, h)
-    h -= 1
-    y -= 1
-    x -= 1
-    w -= 1
-    h = y - h
-    raise_remove_error(x, y, w, h)
-    remove_product_at_location(x, y, w, h)
-  end
-
   def locate(p)
     @warehouse.each_with_index do |y, i|
       y.each_with_index do |val, idx|
@@ -72,10 +52,7 @@ class SimpleWarehouse
     exit
   end
 
-
   private
-  
-
 
   def to_empty_shelve_array
     to_empty_shelve_array = to_numbers_array.map { |_i| i = ' ' }
@@ -92,34 +69,6 @@ class SimpleWarehouse
   def to_grid
     to_grid = to_empty_shelve_array.each_slice(@current_x).to_a
     @warehouse = to_grid
-  end
-
-  def raise_store_error(x, y, w, h)
-    message = "Sorry can't put that there : ("
-    raise message if y.negative? || y > @warehouse.length
-    raise message if h.negative? || h > @warehouse.length
-    raise message if x.negative? || x > @warehouse[y].length
-    raise message if w > @warehouse[y][x..].length
-  end
-  
-  def store_product_at_location(x,y,w,h,p)
-    @warehouse[y][x..(x + w)] = @warehouse[y][x..(x + w)].map { |_i| i = p }
-    while y > h
-      @warehouse[y - 1][x..(x + w)] = @warehouse[y - 1][x..(x + w)].map { |_i| i = p }
-      y -= 1
-    end
-  end
-
-  def raise_remove_error
-    raise 'sorry nothing there : (' if x || y == ' '
-  end
-
-  def remove_product_at_location(x, y, w, h)
-    @warehouse[y][x..(x + w)] = @warehouse[y][x..(x + w)].map { |_i| i = ' ' }
-    while y > h
-      @warehouse[y - 1][x..(x + w)] = @warehouse[y - 1][x..(x + w)].map { |_i| i = ' ' }
-      y -= 1
-    end
   end
 
   def show_help_message
