@@ -13,9 +13,16 @@ describe SimpleWarehouse do
     it 'initialises a new warehouse' do
       warehouse = SimpleWarehouse.new
 
-      result = warehouse.init
+      result = warehouse.init(2,2)
 
       expect(result).to match_array(output)
     end
   end
+
+  describe '#store' do
+    it 'stores product at given location' do
+
+    end
+  end
+
 end
