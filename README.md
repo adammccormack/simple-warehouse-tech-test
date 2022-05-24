@@ -13,6 +13,23 @@ It accepts the following 7 commands:
 | `view` | Output a visual representation of the current state of the grid.<br>Position (1,1) should be at the bottom left position on the grid and (1, H) should be the top left. |
 | `exit` | Exits the application. |
 
+
+## Installation and Setup 
+
+Ruby version: 3.1.2
+
+1. Clone the repo on Github at: https://github.com/alldigits/simple-warehouse-tech-test, Github cloning instructions: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository.
+
+2. Open your terminal and navigate to the folder where you cloned and downloaded simple_warehouse to.
+
+3. Type 'bundle install' to install the dependencies including the test suite Rspec.
+
+4. From the terminal enter the following:
+
+- irb -r './lib/simple_warehouse'
+
+5. 
+
 # User Stories #
 ```
 As a User,
