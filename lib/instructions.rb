@@ -1,5 +1,6 @@
-class Instructions
+# frozen_string_literal: true
 
+class Instructions
   def show_help_message
     help_message
   end
@@ -8,7 +9,7 @@ class Instructions
     unrecognized_message
   end
 
-  private 
+  private
 
   def help_message
     puts <<~HELP
@@ -25,5 +26,4 @@ class Instructions
   def unrecognized_message
     puts 'Command not found. Type `help` for instructions on usage'
   end
-
 end
