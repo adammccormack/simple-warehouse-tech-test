@@ -3,15 +3,16 @@
 require 'simple_warehouse'
 
 describe SimpleWarehouse do
-  it { is_expected.to respond_to(:init) }
-
+  it { is_expected.to respond_to(:init).with(2).argument }
 
   describe '#run' do
     it 'confirms run' do
         warehouse = double('warehouse')
-        allow(warehouse).to receive(:live).and_return(true) 
+        allow(warehouse).to receive(:run).and_return(true) 
         
-        expect(warehouse.live).to eq(true)
+        result = warehouse.run
+
+        expect(result).to eq(true)
     end
   end
 
