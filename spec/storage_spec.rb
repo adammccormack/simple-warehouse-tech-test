@@ -2,6 +2,7 @@ require 'storage'
 
 describe Storage do
   let(:warehouse) { SimpleWarehouse.new }
+  subject(:storage) { described_class.new }
 
   describe '#store_product_at_location' do
     let(:output) {

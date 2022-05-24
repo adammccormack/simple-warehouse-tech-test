@@ -8,11 +8,7 @@ class Storage
     w -= 1
     h = y - h
     raise_store_error(warehouse,x, y, w, h)
-    warehouse[y][x..(x + w)] = warehouse[y][x..(x + w)].map { |_i| i = p }
-    while y > h
-      warehouse[y - 1][x..(x + w)] = warehouse[y - 1][x..(x + w)].map { |_i| i = p }
-      y -= 1
-    end
+    store_locations(warehouse,x,y,w,h,p)
   end
 
   def remove_product_at_location(warehouse,x, y, w, h)
@@ -21,12 +17,9 @@ class Storage
     x -= 1
     w -= 1
     h = y - h
-    raise_remove_error(warehouse,x, y, w, h)
-    warehouse[y][x..(x + w)] = warehouse[y][x..(x + w)].map { |_i| i = ' ' }
-    while y > h
-      warehouse[y - 1][x..(x + w)] = warehouse[y - 1][x..(x + w)].map { |_i| i = ' ' }
-      y -= 1
-    end
+    raise_remove_error(warehouse,x, y, w, h)  
+    remove_locations(warehouse,x, y, w, h)
+    remove_locations(warehouse,x, y, w, h)
   end
 
   private
@@ -38,9 +31,23 @@ class Storage
     raise error_message if x.negative? || x > warehouse[y].length
     raise error_message if w > warehouse[y][x..].length
   end
-
+  
   def raise_remove_error(warehouse,x, y, w, h)
     remove_error_message = 'sorry nothing there : ('
     raise remove_error_message if warehouse[x][y] == ' '
   end
+
+  def store_locations(warehouse,x,y,w,h,p)
+    warehouse[y][x..(x + w)] = warehouse[y][x..(x + w)].map { |_i| i = p }
+    while y > h
+      warehouse[y - 1][x..(x + w)] = warehouse[y - 1][x..(x + w)].map { |_i| i = p }
+      y -= 1
+    end
+  end
+
+  def remove_locations(warehouse,x, y, w, h)
+    warehouse[y][x..(x + w)] = warehouse[y][x..(x + w)].map { |_i| i = ' ' }
+    warehouse[y - 1][x..(x + w)] = warehouse[y - 1][x..(x + w)].map { |_i| i = ' ' }
+  end
+
 end
