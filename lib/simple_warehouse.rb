@@ -17,6 +17,7 @@ class SimpleWarehouse
 
   def run
     @live = true
+    puts @instructions.show_forklift_image
     puts 'Type `help` for instructions on usage'
     while @live
       print '> '
@@ -59,10 +60,6 @@ class SimpleWarehouse
 
   def view
     @warehouse
-  end
-
-  def quit
-    exit
   end
 
   private
