@@ -1,4 +1,31 @@
 # Simple Warehouse
+
+                                                                                
+                                              &&%                ........,,..   
+                                              &&& & .........................   
+                                              %&& & .....*./,......,,*.,,....   
+                                              %&& & ..#,.  %.......  . ......   
+                                              &&& & ..........,/,,,......@/*,   
+                                              &&&&&    .......    .........#,   
+               (((((((((((((((((((            (&&&& ....................,....   
+                /(&                &( &&    %&&&&%& &&&&&&&&&&&&&&&&&&%%&%#&&.  
+                ((&                 &(&&    &&.&&&  &&&&&&&&%#(/*,,..           
+                ((.                 (%(      % &&&                              
+                ((                    (      * &&&                              
+               ((&  &&&         /%#    (     ..&&&                              
+               ((&  &&&&  &      &%&&&  (     *&&&                              
+               ((&  &&&&%(((.      %&&&&&(    #&&&                              
+       *******/****%%%%%%%%%%.    .  &&&&&(   &&&&                              
+       *************,,,*/&&&&&&    %&&&&&&&(&&&&&&                              
+      ***********************,&     %*****#%&@%%&&                              
+      @@@@@@@@@***************//////*/@#&&&&&&(&&&                              
+       @%&&&&&&&#@*************,///*@#&&&(&&&(&&#&                              
+       #&&&&(&&&&##****************@@&&&&&(((((&&#                              
+       *&&(&#&(&&(.****************   &&&(&&##&&%&                              
+         (&&&&&(                       .%&&&&&#                                 
+                                                                               
+
+                                                                               
 This is a simple command-line warehouse management tool. The user can record the storage and removal of crates of variable sizes on a grid of dynamic 'shelves'.
 
 It accepts the following 7 commands:
@@ -26,7 +53,7 @@ Ruby version: 3.1.2
 
 4. From the terminal enter the following:
 
-- irb -r './lib/simple_warehouse'
+- irb -r './lib/simple_warehouse'.
 
 5. Then type in the terminal 'warehouse = SimpleWarehouse.new' and press enter.
 

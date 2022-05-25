@@ -11,7 +11,6 @@ describe SimpleWarehouse do
   it { is_expected.to respond_to(:remove).with(4).argument }
   it { is_expected.to respond_to(:locate).with(1).argument }
   it { is_expected.to respond_to(:view) }
-  it { is_expected.to respond_to(:quit) }
 
   describe '#run' do
     it 'confirms run' do
