@@ -4,8 +4,8 @@ require_relative 'storage'
 require_relative 'instructions'
 
 class SimpleWarehouse
-  attr_reader :current_x, :current_y
-  attr_accessor :warehouse
+  attr_reader :current_x, :current_y, :warehouse
+  
 
   def initialize(storage = Storage.new, instructions = Instructions.new)
     @current_x = 0
